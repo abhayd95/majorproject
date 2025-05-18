@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Admin Panel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f0f2f5;
+            color: #333;
+        }
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background: linear-gradient(180deg, #1f1c2c, #928DAB);
+            color: #fff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 25px 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .logo h2 {
+            font-size: 26px;
+            color: #fff;
+        }
+        .sidebar ul { list-style: none; padding: 0; }
+        .sidebar ul li { margin: 15px 0; }
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        .sidebar ul li a i {
+            margin-right: 12px;
+            width: 20px;
+        }
+        .sidebar ul li a:hover, .sidebar ul li a.active {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(8px);
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 25px;
+        }
+        .header {
+            background: linear-gradient(90deg, #1f1c2c, #928DAB);
+            color: #fff;
+            padding: 18px 25px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        .header h1 { font-size: 26px; }
+        .user-profile {
+            display: flex;
+            align-items: center;
+        }
+        .user-profile img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 22px;
+            border-radius: 12px;
+            color: #fff;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        .stat-card i {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+        .card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            margin-top: 25px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: linear-gradient(135deg, #556cd6, #5f4aa5);
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="logo">
+            <h2>Admin Panel</h2>
+        </div>
+        <ul>
+            <li><a href="#dashboard" class="active"><i class="fas fa-home"></i>Dashboard</a></li>
+            <li><a href="#users"><i class="fas fa-users"></i>Users</a></li>
+            <li><a href="#analytics"><i class="fas fa-chart-bar"></i>Analytics</a></li>
+            <li><a href="#settings"><i class="fas fa-cog"></i>Settings</a></li>
+            <li><a href="#reports"><i class="fas fa-file-alt"></i>Reports</a></li>
+            <li><a href="form.html" id="logoutBtn"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>Dashboard</h1>
+            <div class="user-profile">
+                <img src="https://via.placeholder.com/45" alt="Admin">
+                <span>Admin User</span>
+            </div>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-card">
+                <i class="fas fa-users"></i>
+                <h3>Total Users</h3>
+                <p>1,234</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Revenue</h3>
+                <p>$45,678</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-shopping-cart"></i>
+                <h3>Orders</h3>
+                <p>892</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Recent Activity</h3>
+            <p>Overview of the latest system activities and updates.</p>
+            <a href="#" class="btn">View Details</a>
+        </div>
+    </div>
+
+    <script>
+        // Sidebar active link management
+        document.querySelectorAll('.sidebar ul li a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if(this.id !== 'logoutBtn') e.preventDefault();
+                document.querySelectorAll('.sidebar ul li a').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                const section = this.getAttribute('href').substring(1);
+                console.log(`Navigating to ${section}`);
+            });
+        });
+
+        // Logout redirect to form.html
+        document.getElementById('logoutBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = "form.html";
+        });
+    </script>
+
+</body>
+</html>

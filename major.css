@@ -1,0 +1,286 @@
+/* filepath: /Users/abhaytiwari/Desktop/major.css */
+
+/* General Styles */
+body {
+    
+    background: linear-gradient(135deg, #272417, hsl(211, 18%, 77%), #da9484);
+    background-size: 400% 400%;
+    animation: gradientAnimation 8s ease infinite;
+    
+
+    @keyframes gradientAnimation {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    line-height: 1.6;
+
+}
+#doctores{
+    background-color: rgba(255, 255, 255, 0.9);
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: #333;
+    transition: transform 0.3s ease;
+}
+/* Header Styles */
+h1 {
+    text-align: center;
+    color: #004080;
+    margin-top: 20px;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    margin: 20px auto;
+    transition: transform 0.3s ease;
+
+
+
+}
+
+/* Navigation Styles */
+nav {
+    background-color: rgba(0, 64, 128, 0.8);
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+
+}
+
+nav ul li {
+    margin: 0 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: rgba(0, 64, 128, 0.6);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+}
+
+nav ul li a:hover {
+    color: #ffcc00;
+    background-color: rgba(0, 64, 128, 0.8);
+    transform: scale(1.05);
+
+}
+
+/* App Section Styles */
+#app {
+    background-color: rgba(255, 255, 255, 0.9);
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: #333;
+    transition: transform 0.3s ease;
+
+}
+
+#app h2 {
+    color: #004080;
+    margin-bottom: 15px;
+    font-size: 2rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    margin: 20px auto;
+    transition: transform 0.3s ease;
+
+}
+
+#app p {
+    font-size: 1rem;
+    color: #555;
+    margin: 10px 0;
+    line-height: 1.5;
+    text-align: justify;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 20px auto;
+    transition: transform 0.3s ease;
+
+
+}
+
+#app ul {
+    list-style: none;
+    padding: 0;
+
+
+}
+
+#app ul li {
+    margin: 10px 0;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    #app {
+        padding: 15px;
+    }
+}
+nav ul li:hover {
+    transform: scale(1.1);
+    background-color: rgba(0, 64, 128, 0.9);
+    cursor: pointer;
+}
+/* Footer Styles */
+footer {
+    background-color: rgba(0, 64, 128, 0.8);
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 630px;
+    font-size: 0.9rem;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+footer a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: white;
+    text-decoration: underline;
+    transform: scale(1.05);
+
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    max-width: 800px;
+    margin: 20px auto;
+    overflow: hidden;
+    img {
+        transition: transform 0.3s ease;
+        cursor: pointer;
+    }
+
+    img:hover {
+        transform: scale(1.2);
+    }
+
+
+}
+body {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    }
+    footer p {
+        margin: 0;
+        padding: 5px;
+        font-size: 0.8rem;
+        color: #ddd;
+    }
+
+    footer p span {
+        font-weight: bold;
+        color: #ffcc00;
+    }
+
+    footer p a {
+        color: #ffcc00;
+        text-decoration: none;
+        font-weight: normal;
+        transition: color 0.3s ease;
+    }
+
+    footer p a:hover {
+        color: white;
+        text-decoration: underline;
+    }
+    .founder{
+        text-align: center;
+        font-size: 1.2rem;
+        color: #333;
+        margin: 20px auto;
+        padding: 10px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        max-width: 600px;
+        transition: transform 0.3s ease;
+    }

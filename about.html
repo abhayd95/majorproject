@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Us - Eye Hospital</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --bg-color: linear-gradient(to right, #eef2f3, #8e9eab);
+      --text-color: #333;
+      --card-bg: #ffffff;
+      --btn-bg: #003366;
+      --btn-hover: #0055aa;
+    }
+
+    body.dark-mode {
+      --bg-color: linear-gradient(to right, #232526, #414345);
+      --text-color: #f1f1f1;
+      --card-bg: #2c2f33;
+      --btn-bg: #111;
+      --btn-hover: #333;
+    }
+
+    body {
+      margin:0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      transition: all 0.5s ease;
+    }
+
+    header {
+      background: var(--btn-bg);
+      color:white;
+      padding: 20px;
+      text-align:center;
+    }
+
+    .action-btns {
+      position:fixed;
+      top:20px;
+      right:20px;
+      z-index:999;
+      display: flex;
+      gap:10px;
+    }
+
+    .action-btns a, .action-btns button {
+      background: #25D366;
+      color:white;
+      padding: 12px 20px;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      border: none;
+      display: flex;
+      align-items: center;
+      gap:8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .action-btns a:hover, .action-btns button:hover {
+      background: #1ebe5c;
+    }
+
+    .action-btns img {width:20px;}
+
+    .container {max-width:1200px; margin:auto; padding:20px;}
+
+    .hero {
+      background:url('https://source.unsplash.com/1600x600/?eye,hospital') no-repeat center/cover;
+      padding:80px 20px;
+      color:white;
+      text-align:center;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {font-size: 48px; margin-bottom: 10px;}
+    .hero p {font-size: 18px;}
+
+    .section {padding:40px 20px;}
+    .section h2 {text-align:center; margin-bottom:20px;}
+
+    .features, .faqs, .doctors, .gallery, .insurance {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap:20px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius:8px;
+      padding:20px;
+      box-shadow:0 2px 5px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+    }
+
+    .cta {
+      text-align:center;
+      margin-top:30px;
+    }
+
+    .cta button {
+      padding:12px 25px;
+      background: var(--btn-bg);
+      color:white;
+      border:none;
+      border-radius:6px;
+      cursor:pointer;
+    }
+
+    .cta button:hover {
+      background: var(--btn-hover);
+    }
+
+    form {
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    input, textarea {
+      padding:10px;
+      border:1px solid #ccc;
+      border-radius:5px;
+    }
+
+    input[type="submit"] {
+      background: var(--btn-bg);
+      color:white;
+      border:none;
+      cursor:pointer;
+    }
+
+    input[type="submit"]:hover {
+      background: var(--btn-hover);
+    }
+
+    footer {
+      background: var(--btn-bg);
+      color:white;
+      text-align:center;
+      padding:15px;
+      margin-top:30px;
+    }
+
+    iframe {
+      width:100%;
+      border:0;
+      height:300px;
+      border-radius:8px;
+    }
+
+    .counter {
+      font-size:36px;
+      color: var(--btn-bg);
+      text-align:center;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>EyeCare Vision Hospital</h1>
+  <p>Dedicated to your clear vision</p>
+</header>
+
+<!-- Floating Action Buttons -->
+<div class="action-btns">
+  <button onclick="toggleMode()">🌙</button>
+  <a href="https://wa.me/916307048631" target="_blank">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png"/> WhatsApp
+  </a>
+</div>
+
+<div class="hero">
+  <h1>About Our Eye Hospital</h1>
+  <p>Serving your vision with advanced technology & expert care</p>
+</div>
+
+<div class="container">
+
+  <div class="section">
+    <h2>Real-time Appointment Counter</h2>
+    <div class="counter" id="counter">1000+</div>
+  </div>
+
+  <div class="section">
+    <h2>Why Choose Us?</h2>
+    <div class="features">
+      <div class="card"><h3>Advanced Operation Theaters</h3><p>Latest ophthalmic surgical technology.</p></div>
+      <div class="card"><h3>24/7 Pharmacy</h3><p>Instant access to genuine medicines.</p></div>
+      <div class="card"><h3>Expert Ophthalmologists</h3><p>Top-rated eye specialists available round the clock.</p></div>
+      <div class="card"><h3>Modern Diagnostic Lab</h3><p>Advanced eye scans & precise tests.</p></div>
+    </div>
+  </div>
+
+  <div class="section" style="background:rgba(255,255,255,0.1); border-radius:8px;">
+    <h2>Our Specialist Doctors</h2>
+    <div class="doctors">
+      <div class="card"><h3>Dr. Arjun Mehra</h3><p>LASIK & Cornea Specialist</p></div>
+      <div class="card"><h3>Dr. Riya Singh</h3><p>Retina & Cataract Surgeon</p></div>
+      <div class="card"><h3>Dr. Neha Gupta</h3><p>Glaucoma Expert</p></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Our Insurance Partners</h2>
+    <div class="insurance">
+      <div class="card">Star Health</div>
+      <div class="card">ICICI Lombard</div>
+      <div class="card">HDFC Ergo</div>
+      <div class="card">Aditya Birla Health</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Facilities Gallery</h2>
+    <div class="gallery">
+      <div class="card"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_hr5m7Yq_H62ZFe2x-kip0vdSYuF35nev0g&s" width="100%" style="border-radius:5px;"></div>
+      <div class="card"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZlWgZM_nvHpXWLplefEJStGC40CT-eUqZtw&s" width="100%" style="border-radius:5px;"></div>
+      <div class="card"><img src="data:image/jpeg;base64,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" width="100%" style="border-radius:5px;"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Contact Us</h2>
+    <form onsubmit="sendContact(event)">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <textarea id="message" rows="4" placeholder="Your Message"></textarea>
+      <input type="submit" value="Send Message">
+    </form>
+  </div>
+
+  <div class="section">
+    <h2>Locate Us</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.9028475942365!2d90.39297147588372!3d23.750903778688963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8e1cf9f7bf9%3A0x5945b64cf2b4dfdc!2sHospital!5e0!3m2!1sen!2sbd!4v1681803451340!5m2!1sen!2sbd" allowfullscreen></iframe>
+  </div>
+
+</div>
+
+<footer>
+  <p>&copy; 2025 EyeCare Vision Hospital | Designed by Abhay</p>
+</footer>
+
+<script>
+  let count = 1000;
+  setInterval(() => {
+    count += Math.floor(Math.random() * 5);
+    document.getElementById("counter").innerText = count + "+";
+  }, 2000);
+
+  function sendContact(e){
+    e.preventDefault();
+    const name = document.getElementById("name").value;
+    alert("Thank you "+ name + ", your message has been sent!");
+    document.querySelector("form").reset();
+  }
+
+  function toggleMode(){
+    document.body.classList.toggle("dark-mode");
+  }
+</script>
+
+</body>
+</html>

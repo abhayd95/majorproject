@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            padding: 0px;
+            display:block;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #6a11cb, #2575fc, #6a11cb);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            box-sizing: border-box;
+            font-size: 16px;
+            color: #333;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+            animation: fadeIn 1s ease-in-out;
+
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+
+
+
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: border-color 0.3s;
+
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        button:hover {
+            background-color: hsl(0, 100%, 53%);
+            transform: scale(1.05);
+ }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Patient Details</h1>
+        <form>
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter full name" required>
+
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" placeholder="Enter age" required>
+
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender" required>
+                <option value="">Select gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label for="contact">Contact Number</label>
+            <input type="tel" id="contact" name="contact" placeholder="Enter contact number" required>
+
+            <label for="address">Address</label>
+            <textarea id="address" name="address" rows="4" placeholder="Enter address" required></textarea>
+            <label for="address-details">Address Details</label>
+            <select id="district" name="district" required>
+                <option value="">Select District</option>
+                <option value="district1">JAUNPUR</option>
+                <option value="district2">BADHOHI</option>
+                <option value="district3">SULTANPUR</option>
+                <option value="district4">PRATAPGARH</option>
+                <option value="district5">AMETHI</option>
+                <option value="district6">RAEBARELI</option>
+                <option value="district7">FATEHPUR</option>
+                <option value="district8">ALLAHABAD</option>
+                <option value="district9">VARANASI</option>
+                <option value="district10">GHAZIPUR</option>
+                <option value="district11">AZAMGARH</option>
+                <option value="district12">MIRZAPUR</option>
+                <option value="district13">SONBHADRA</option>
+                <option value="district14">CHANDAULI</option>
+                <option value="district15">KUSHINAGAR</option>
+                <option value="district16">DEORIA</option>
+            </select>
+
+            <select id="village" name="village" required>
+                <option value="">Select Village</option>
+                <option value="village1">BHIDUNA</option>
+                <option value="village2">MADHOPUR</option>
+                <option value="village3">MEERPUR</option>
+                <option value="village4">DUBEYPUR</option>
+                <option value="village5">SENAPUR</option>
+
+
+            </select>
+
+            <select id="city" name="city" required>
+                <option value="">Select City</option>
+                <option value="city1">UTTERPREDESH</option>
+                <option value="city2">MP</option>
+                <option value="city3">DELHI</option>
+                <option value="city4">BIHAR</option>
+                <option value="city5">RAJASTHAN</option>
+                <option value="city6">HARYANA</option>
+                <option value="city7">UTTARAKHAND</option>
+                <option value="city8">HIMACHAL PRADESH</option>
+                <option value="city9">JHARKHAND</option>
+                <option value="city10">CHHATTISGARH</option>
+                <option value="city11">ODISHA</option>
+                <option value="city12">BIHAR</option>
+                <option value="city13">PUNJAB</option>
+                <option value="city14">HIMACHAL PRADESH</option>
+                <option value="city15">JAMMU AND KASHMIR</option>
+                <option value="city16">UTTARAKHAND</option>
+                        </select>
+
+            <label for="medical-history">Medical History</label>
+            <textarea id="medical-history" name="medical-history" rows="4" placeholder="Enter medical history"></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script>
+        
+        document.querySelector("form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Create a message element
+            const message = document.createElement("div");
+            message.textContent = "Form submitted successfully!";
+            message.style.position = "fixed";
+            message.style.top = "20px";
+            message.style.left = "50%";
+            message.style.transform = "translateX(-50%)";
+            message.style.backgroundColor = "#28a745";
+            message.style.color = "white";
+            message.style.padding = "10px 20px";
+            message.style.borderRadius = "5px";
+            message.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.2)";
+            message.style.zIndex = "1000";
+            document.body.appendChild(message);
+
+            // Remove the message after 5 seconds
+            setTimeout(() => {
+                message.remove();
+            }, 5000);
+        });
+        document.querySelector("form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Redirect to a new page after form submission
+            window.location.href = "majorproject.html"; // Replace "success.html" with the desired page URL
+        });
+    </script>
+</body>
+</html>

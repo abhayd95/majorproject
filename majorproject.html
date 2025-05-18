@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eye Hospital Management System</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #eef2f7;
+            color: #333;
+            transition: 0.3s;
+        }
+        body.dark-mode {
+            background: #121212;
+            color: #e0e0e0;
+        }
+        header {
+            background: linear-gradient(90deg, #1976d2, #0d47a1);
+            color: white;
+            padding: 25px 40px;
+            text-align: center;
+        }
+        nav {
+            background-color: #0d47a1;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 10px 0;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+            position: relative;
+        }
+        nav a:hover {
+            background: #1565c0;
+            border-radius: 5px;
+            transform: scale(1.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+        nav a::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            top: 0;
+            left: 0;
+            border-radius: 5px;
+            transform: scale(0);
+            transition: transform 0.3s ease;
+        }
+        nav a:hover::before {
+            transform: scale(1);
+        }
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+            background: url('https://images.unsplash.com/photo-1588776814546-ec7ed6ccf056') no-repeat center center/cover;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+        .hero h2 {
+            font-size: 48px;
+            margin: 0 0 20px;
+        }
+        .hero p {
+            font-size: 20px;
+            max-width: 600px;
+        }
+        .btn {
+            margin-top: 20px;
+            padding: 12px 28px;
+            background: #ff4081;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            position: relative;
+            z-index: 2;
+        }
+        .btn:hover {
+            background: #f50057;
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 40px;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        body.dark-mode .card {
+            background: #1e1e1e;
+        }
+        .card i {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: #1976d2;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+        footer {
+            background: #0d47a1;
+            color: white;
+            text-align: center;
+            padding: 20px 10px;
+            margin-top: 30px;
+        }
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            color: white;
+            border-radius: 50%;
+            padding: 15px;
+            font-size: 28px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .whatsapp-btn:hover {
+            transform: scale(1.2);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+        .toggle-mode {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            background: #ff4081;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+        .appointment-counter {
+            text-align: center;
+            font-size: 26px;
+            padding: 20px;
+            background: lch(96.21% 3.19 190.15);
+            color: hwb(0 0% 100%);
+            margin: 30px auto;
+            border-radius: 10px;
+            max-width: 300px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: background 0.3s ease;
+            cursor: pointer;
+            font-family:Arial, Helvetica, sans-serif;
+            background: transparent;
+         }
+        .appointment-counter:hover {
+            background: lab(97.19% 2.67 3.1);
+            box-shadow: 0 8px 20px hsl(189, 94%, 43%);
+            color: hsl(0, 0%, 0%);
+            font-style: calc(0.5em + 1vw);
+            font-family:'Times New Roman', Times, serif;
+
+            transform: scale(1.05);
+            
+
+        }
+        .datetime {
+            text-align: center;
+            font-size: 18px;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        .Abhay_viruses {
+            color: hwb(153 83% 13%);
+            font-weight: bold;
+    font-style: Baskerville;
+            transition: color 0.3s ease;
+            cursor: pointer;
+
+            
+        }
+        .Abhay_viruses:hover {
+            color: lab(0% 0 0);
+            text-decoration: none;
+            cursor: pointer;
+}
+.social {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0px;
+            font-size: 20px;
+        }
+        .social a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: inherit;
+
+        }
+        .social img {
+            width: 30px;
+            height: 30px;
+            transition: transform 0.3s ease;
+
+        }
+        .social img:hover {
+            transform: scale(1.2);
+
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Eye Hospital Management System</h1>
+    </header>
+    <button class="toggle-mode" onclick="toggleDarkMode()">Toggle Mode</button>
+    <nav>
+        
+        <a href="sarvice.html">Services</a>
+        <a href="appointments.html">Book Appointment</a>
+        <a href="facilities.html">Our Facilities</a>
+        <a href="doctors.html">Our Doctors</a>
+        <a href="insurance.html">Insurance</a>
+        <a href="about.html">About Us</a>
+        
+    </nav>
+    <div class="hero">
+        <h2>Your Vision, Our Priority</h2>
+        <p>Modern, affordable eye care services with world-class technology and expert specialists.</p>
+        <button class="btn">Explore Now</button>
+    </div>
+    <div class="appointment-counter">
+        Appointments Today: <span id="appointmentCount">0</span>
+    </div>
+    <div class="datetime" id="datetime"></div>
+    <section class="features">
+        <div class="card">
+            <i class="fas fa-eye"></i>
+            <h3>Eye Checkups</h3>
+            <p>Comprehensive vision care and accurate diagnostic services.</p>
+        </div>
+        <div class="card">
+            <i class="fas fa-procedures"></i>
+            <h3>Operation Theater</h3>
+            <p>State-of-the-art modular eye OT with world-class equipment.</p>
+        </div>
+        <div class="card">
+            <i class="fas fa-user-md"></i>
+            <h3>Specialist Doctors</h3>
+            <p>Experienced and certified ophthalmologists available 24x7.</p>
+        </div>
+        <div class="card">
+            <i class="fas fa-ambulance"></i>
+            <h3>Emergency Care</h3>
+            <p>Immediate and efficient emergency eye care services.</p>
+        </div>
+    </section>
+    <footer>
+        &copy; 2025 Eye Hospital Management System Developed by <b class="Abhay_viruses">Abhay_viruses </b> <p class="social"><a href="https://wa.me/6307048631"  target="_blank" style="color: #25D366;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width: 30px; height: 30px;"></a><a href="mailto:at546714@gmail.com" target="_blank" style="color: #EA4335;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail" style="width: 30px; height: 30px;">
+            </a>
+            <a href="https://www.linkedin.com/in/abhay-tiwari-545a57358?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" style="color: #0077B5;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" style="width: 30px; height: 30px;">
+            </a>
+            <a href="https://www.instagram.com/abhay_d95?igsh=MTU3ODJ4ejQ3YjMwbg==" target="_blank" style="color: #E4405F;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram" style="width: 30px; height: 30px;">
+            </a>
+            </p>
+        </footer>
+        <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+        let count = 0;
+        function updateAppointmentCounter() {
+            count += Math.floor(Math.random() * 9);
+            document.getElementById('appointmentCount').textContent = count;
+        }
+        setInterval(updateAppointmentCounter, 2000);
+        function updateDateTime() {
+            const now = new Date();
+            document.getElementById('datetime').textContent = now.toLocaleString();
+        }
+        setInterval(updateDateTime, 1000);
+        updateDateTime();
+    </script>
+</body>
+</html>

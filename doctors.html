@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Our Doctors</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #333;
+      padding: 30px;
+    }
+    h1 {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 25px;
+    }
+    .controls input, .controls select, .controls button {
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      font-size: 14px;
+    }
+    .controls input {
+      flex: 1;
+      min-width: 200px;
+    }
+    .controls button {
+      background: #5a67d8;
+      color: #fff;
+      cursor: pointer;
+    }
+    .controls select {
+      background: #fff;
+    }
+    .doctor-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .doctor-card {
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: 0.4s ease;
+    }
+    .doctor-card:hover {
+      transform: translateY(-8px) scale(1.02);
+    }
+    .doctor-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .doctor-info { padding: 20px; }
+    .doctor-info h3 { margin-bottom: 6px; color: #333; }
+    .doctor-info p { font-size: 14px; margin: 3px 0; color: #666; }
+    .stars { color: #facc15; margin-bottom: 8px; }
+    .appoint-btn {
+      margin-top: 10px;
+      padding: 10px;
+      background: #667eea;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      width: 100%;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .appoint-btn:hover { background: #5a67d8; }
+    .modal {
+      display: none;
+      position: fixed;
+      top:0; left:0; right:0; bottom:0;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      width: 320px;
+      text-align: center;
+      position: relative;
+    }
+    .modal-content input {
+      width: 90%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .modal-content button {
+      padding: 10px 20px;
+      margin-top: 12px;
+      border: none;
+      background: #5a67d8;
+      color: #fff;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .close-btn {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      font-size: 22px;
+      cursor: pointer;
+      color: #666;
+    }
+    .doctor-count {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 15px;
+      font-size: 18px;
+
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Meet Our Expert Doctors</h1>
+  <div class="controls">
+    <input type="text" id="searchInput" placeholder="Search by name or specialization...">
+    <select id="specializationFilter">
+      <option value="">All Specializations</option>
+    </select>
+    <button onclick="sortByExperience()">Sort by Experience</button>
+  </div>
+
+  <div class="doctor-count" id="doctorCount"></div>
+
+  <div class="doctor-container" id="doctorList"></div>
+
+  <div class="modal" id="appointmentModal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h3 id="doctorName">Book Appointment</h3>
+      <input type="text" id="patientName" placeholder="Your Name">
+      <input type="text" id="patientContact" placeholder="Contact Number">
+      <input type="date" id="appointmentDate">
+      <button onclick="confirmAppointment()">Confirm</button>
+    </div>
+  </div>
+
+  <script>
+    const doctors = [
+      {name:"Dr. Anurag Tiwari", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaIPNhbRFmFlSQopMpthiadDcCsjXAStFfdQ&s/400x250/?doctor,1", specialization:"Eye Surgeon", experience:10, rating:5},
+      {name:"Dr. Priya Sharma", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_UNr3cjVDdhBBVS4R7vSEsWnSuHBuReWJew&s/400x250/?doctor,2", specialization:"Cardiologist", experience:8, rating:4},
+      {name:"Dr. Rahul Verma", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4NCYGRXV7kTpJGlgxN81lU-oEi47JegB1Sw&s/400x250/?doctor,3", specialization:"Neurologist", experience:12, rating:5},
+      {name:"Dr. Neha Gupta", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR002NhFfhDmTUz_dmeoxn0Rxba6ahkbggXng&s/400x250/?doctor,4", specialization:"Dentist", experience:7, rating:4},
+      {name:"Dr. Anjali Mehra", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu4Kk3Ijg4KPDaJH4A3JUfgJYEBuoAfYJRjQ&s/400x250/?doctor,5", specialization:"Orthopedic", experience:9, rating:5},
+      {name:"Dr. Sameer Khan", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYeUtLphNOw8rMNfWJS-e7ZxUK2K2o3aGK6A&s/400x250/?doctor,6", specialization:"ENT Specialist", experience:6, rating:4},
+      {name:"Dr. Meera Das", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTb339DTSofWGV0xor6ilGK8tKrMgvF8SvVYg&s/400x250/?doctor,7", specialization:"Gynecologist", experience:11, rating:5},
+      {name:"Dr. Vikram Patel", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI-suF-HNAYPoZM6k-sO69b531jmN0-GiFOQ&s/400x250/?doctor,8", specialization:"Dermatologist", experience:5, rating:4},
+      {name:"Dr.Sonam Mishra", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_jshYMYFilHUH5zctmlgIO2GYhKmeXme1GQ&s/400x250/?doctor,9",specialization:"Body checkup", experience:5,rating:3 },
+      {name:"Dr.Snjay Tiwari", image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzMW6bDK3SJcIrRX67g9DQaLnhcLdBwo-Ggg&s/400x250/?doctor,10",specialization:"Eye checkup", experience:7,rating:3 },
+    ];
+
+    let filteredDoctors = [...doctors];
+    const container = document.getElementById('doctorList');
+    const specializationFilter = document.getElementById('specializationFilter');
+    const countDisplay = document.getElementById('doctorCount');
+    let selectedDoctor = "";
+
+    function populateSpecializations(){
+      const specs = [...new Set(doctors.map(doc=>doc.specialization))];
+      specs.forEach(spec=>{
+        const option = document.createElement('option');
+        option.value = spec;
+        option.textContent = spec;
+        specializationFilter.appendChild(option);
+      });
+    }
+
+    function displayDoctors(list){
+      container.innerHTML = '';
+      countDisplay.textContent = `Showing ${list.length} doctor(s)`;
+      if(list.length==0){
+        container.innerHTML = '<p style="color:white;text-align:center;">No doctors found.</p>';
+        return;
+      }
+      list.forEach(doctor=>{
+        const stars = '★'.repeat(doctor.rating) + '☆'.repeat(5-doctor.rating);
+        const card = document.createElement('div');
+        card.className = 'doctor-card';
+        card.innerHTML = `
+          <img src="${doctor.image}" alt="${doctor.name}">
+          <div class="doctor-info">
+            <h3>${doctor.name}</h3>
+            <div class="stars">${stars}</div>
+            <p><strong>Specialization:</strong> ${doctor.specialization}</p>
+            <p><strong>Experience:</strong> ${doctor.experience} Years</p>
+            <button class="appoint-btn" onclick="openModal('${doctor.name}')">Book Appointment</button>
+          </div>`;
+        container.appendChild(card);
+      });
+    }
+
+    function searchDoctor(){
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const specValue = specializationFilter.value;
+      filteredDoctors = doctors.filter(doc =>
+        (doc.name.toLowerCase().includes(query) || doc.specialization.toLowerCase().includes(query)) &&
+        (specValue=="" || doc.specialization === specValue)
+      );
+      displayDoctors(filteredDoctors);
+    }
+
+    function sortByExperience(){
+      filteredDoctors.sort((a, b) => b.experience - a.experience);
+      displayDoctors(filteredDoctors);
+    }
+
+    function openModal(doctorName){
+      selectedDoctor = doctorName;
+      document.getElementById('doctorName').innerText = "Book Appointment with " + doctorName;
+      document.getElementById('appointmentModal').style.display = 'flex';
+    }
+
+    function closeModal(){
+      document.getElementById('appointmentModal').style.display = 'none';
+    }
+
+    function confirmAppointment(){
+      const name = document.getElementById('patientName').value.trim();
+      const contact = document.getElementById('patientContact').value.trim();
+      const date = document.getElementById('appointmentDate').value;
+      if(!name || !contact || !date){
+        alert("Please fill all fields!");
+        return;
+      }
+      alert(`Appointment booked with ${selectedDoctor} on ${date}.`);
+      closeModal();
+    }
+
+    populateSpecializations();
+    displayDoctors(doctors);
+    document.getElementById('searchInput').addEventListener('input', searchDoctor);
+    specializationFilter.addEventListener('change', searchDoctor);
+  </script>
+
+</body>
+</html>

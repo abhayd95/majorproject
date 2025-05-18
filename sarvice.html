@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eye Hospital Services</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, lab(56.13% -14.81 -13.86), rgb(255, 255, 247),lch(74.28% 65.09 133.52));
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            box-sizing: border-box;
+            font-size: 16px;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+
+        }
+        header {
+            background-color: lch(86.75% 13.87 155.78);
+            color: #000000;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+
+        }
+        main {
+            padding: 20px;
+            margin-top: 80px; /* Adjust for fixed header */
+            width: 100%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+
+
+        }
+        section h2 {
+            color: #0078d7;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            background: #e7f3ff;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: hsl(0, 0%, 95%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin: 10px 0;
+            width: 200px;
+            background: linear-gradient(to right, lab(80.21% -20.16 33.64), #2575fc);
+            background-size: 200% 200%;
+            animation: gradient 5s ease infinite;
+
+
+
+        }
+        button:hover {
+            background-color: hwb(0 0% 0%);
+            transform: scale(1.05);
+            transition: all 0.3s ease;
+
+
+        }
+    </style>
+    <script>
+        function showAlert() {
+            alert("Thank you for visiting our Eye Hospital!");
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Eye Hospital</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Our Services</h2>
+            <ul>
+                <li>Comprehensive Eye Exams</li>
+                <li>Cataract Surgery</li>
+                <li>LASIK and Refractive Surgery</li>
+                <li>Glaucoma Treatment</li>
+                <li>Retina Care</li>
+                <li>Pediatric Eye Care</li>
+                <li>Contact Lens Fitting</li>
+                <li>Emergency Eye Care</li>
+                
+            </ul>
+            <button onclick="showAlert()">Learn More</button>
+        </section>
+    </main>
+    <footer>
+        <p>Contact us at: info@eyehospital.com | Phone: (123) 456-7890</p>
+    </footer>
+</body>
+</html>

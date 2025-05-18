@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & Signup Page</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+background-image: url(earth.jpeg);
+
+    background-size: 100% 100%;
+    animation: gradient 15s ease infinite;
+      display: flex;
+      image-resolution: 100%;
+      background-position: center;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+color:white;
+        text-align: center;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    .container {
+      background: hsl(202, 28%, 92%);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px #0df082;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      transition: all 0.3s ease;
+        transform: scale(1);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 0.5s ease-in-out;
+        box-shadow: 0 0 10px rgb(0, 0, 0),
+                    0 0 20px lab(0% 0 0),
+                    0 0 30px lab(99.39% -3.19 2.64);
+                    background: transparent;
+
+
+    }
+
+    .container:hover {
+      transform: scale(1.03);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 30px;
+      color: #333;
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin: 12px 0;
+      border: 1px solid hsl(170, 43%, 3%);
+      border-radius: 8px;
+      font-size: 16px;
+      transition: 0.3s ease;
+    }
+
+    input:focus {
+      border-color: #2575fc;
+      outline: none;
+      box-shadow: 0 0 10px #090a0a80;
+    }
+
+    button {
+      padding: 14px 25px;
+      background: #2575fc;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+      font-size: 16px;
+      font-weight: 600;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background: #6a11cb;
+      transform: translateY(-2px);
+    }
+
+    .link {
+      margin-top: 15px;
+      display: block;
+      color: #2575fc;
+      cursor: pointer;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .link:hover {
+      text-decoration: underline;
+    }
+
+    #message {
+      color: red;
+      margin: 10px 0;
+      font-size: 14px;
+    }
+
+    .show-pass {
+      float: right;
+      margin: -25px 10px 0;
+      cursor: pointer;
+      color: #999;
+      font-size: 13px;
+    }
+
+    /* Admin Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:transparent;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: lab(23% -3.81 -6.94);
+      padding: 30px;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      animation: modalFadeIn 0.4s ease-in-out;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+
+    }
+
+    .modal-content input {
+      width: 100%;
+      margin: 8px 0;
+      padding: 14px;
+      font-size: 16px;
+    }
+
+    .close-btn {
+      float: right;
+      cursor: pointer;
+      font-size: 20px;
+      margin-top: -10px;
+      color: hwb(0 100% 0%);
+    }
+    
+h2{
+  color:white;
+  font-family: lucida;
+}
+    
+
+  </style>
+</head>
+<body>
+    
+    <div   style="position: fixed; top: 20px; right: 20px; background: transparent; padding: 15px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+        <h3 style="margin: 0 0 10px 0; color: white; font-size: 16px;">Contact Developer</h3>
+        <div style="display: flex; gap: 15px;">
+            <a href="https://wa.me/6307048631" target="_blank" style="color: #25D366;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width: 30px; height: 30px;">
+            </a>
+            <a href="mailto:at546714@gmail.com" target="_blank" style="color: #EA4335;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail" style="width: 30px; height: 30px;">
+            </a>
+            <a href="https://www.linkedin.com/in/abhay-tiwari-545a57358?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" style="color: #0077B5;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" style="width: 30px; height: 30px;">
+            </a>
+            <a href="https://www.instagram.com/abhay_d95?igsh=MTU3ODJ4ejQ3YjMwbg==" target="_blank" style="color: #E4405F;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram" style="width: 30px; height: 30px;">
+            </a>
+        </div>
+    </div></a>
+<div class="container">
+  <h2 id="formTitle">Login</h2>
+
+  <input type="text" id="username" placeholder="Username" required><br>
+  <input type="password" id="password" placeholder="Password" required><br>
+  <span class="show-pass" onclick="togglePassword()">Show</span>
+
+  <div id="confirmPasswordDiv" style="display:none;">
+    <input type="password" id="confirmPassword" placeholder="Confirm Password">
+  </div>
+
+  <div id="message"></div>
+
+  <button onclick="handleAction()" id="actionButton">Login</button>
+
+  <span class="link" onclick="toggleForm()">New user? Signup</span>
+  <span class="link" onclick="openAdminModal()">Admin Login</span>
+</div>
+
+<!-- Admin Login Modal -->
+<div class="modal" id="adminModal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeAdminModal()">&times;</span>
+    <h3>Admin Login</h3>
+    <input type="text" id="adminUser" placeholder="Admin Username" required>
+    <input type="password" id="adminPass" placeholder="Admin Password" required>
+    <button onclick="adminLogin()">Login</button>
+  </div>
+</div>
+
+<script>
+  let isLogin = true;
+
+  function toggleForm() {
+    isLogin = !isLogin;
+    document.getElementById('formTitle').innerText = isLogin ? 'Login' : 'Signup';
+    document.getElementById('confirmPasswordDiv').style.display = isLogin ? 'none' : 'block';
+    document.getElementById('actionButton').innerText = isLogin ? 'Login' : 'Signup';
+    document.getElementById('message').innerText = '';
+  }
+
+  function handleAction() {
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value;
+
+    if (!username || !password) {
+      showMessage("Please fill all fields!");
+      return;
+    }
+
+    if (isLogin) {
+      const storedUser = localStorage.getItem(username);
+      if (storedUser && storedUser === password) {
+        window.location.href = "majorproject.html";
+      } else {
+        showMessage("Invalid credentials!");
+      }
+    } else {
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      if (password !== confirmPassword) {
+        showMessage("Passwords do not match!");
+        return;
+      }
+      localStorage.setItem(username, password);
+      showMessage("Signup Successful! Please login.", "green");
+      toggleForm();
+    }
+  }
+
+  function showMessage(msg, color="red") {
+    const msgDiv = document.getElementById('message');
+    msgDiv.innerText = msg;
+    msgDiv.style.color = color;
+  }
+
+  function togglePassword() {
+    const passInput = document.getElementById('password');
+    if (passInput.type === "password") {
+      passInput.type = "text";
+    } else {
+      passInput.type = "password";
+    }
+  }
+
+  function openAdminModal() {
+    document.getElementById('adminModal').style.display = 'flex';
+  }
+
+  function closeAdminModal() {
+    document.getElementById('adminModal').style.display = 'none';
+  }
+
+  function adminLogin() {
+    const adminUsername = document.getElementById('adminUser').value;
+    const adminPassword = document.getElementById('adminPass').value;
+
+    if (adminUsername === "@abhay_d95" && adminPassword === "admin@123") {
+      window.location.href = "admin.html";
+    } else {
+      alert("Invalid Admin Credentials!");
+    }
+  }
+</script>
+
+
+<script>
+  axios.post('http://localhost:3000/signup', {
+  name: 'Abhay',
+  username: 'abhay_d95',
+  password: '123456'
+})
+.then(res => console.log(res.data))
+.catch(err => console.log(err.response.data));
+
+</script>
+<script src="login.js"></script>
+</body>
+</html>
